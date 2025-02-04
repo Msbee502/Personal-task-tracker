@@ -1,40 +1,41 @@
 import { useState } from "react";
+import Input from "./components/Input";
+import Button from "./components/button";
+import Screen from "./components/Screen";
 
-const App = () => {
+function App() {
+  const [firstInput, setFirstInput] = useState<string>("");
   const [tasks, setTasks] = useState<string[]>([]);
-  const [newTask, setNewTask] = useState<string>("");
 
-  const addTask = () => {
-    if (newTask.trim() !== "") {
-      setTasks([...tasks, newTask]);
-      setNewTask(""); // Clear input field
+  const addTasks = (task: string) => {
+    if (task.trim() !== "") {
+      setTasks([...tasks, task]);
+      setFirstInput(""); // Clear input field after adding
     }
   };
 
-  const removeTask = (index: number) => {
-    setTasks(tasks.filter((_, i) => i !== index));
-  };
-
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      <h2>Task manager</h2>
-      <input
-        type="text"
-        value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
-        placeholder="Enter a task"
+    <div className="app">
+      <h1>My Tasks</h1>
+
+      <Input
+        value={firstInput}
+        onChange={(value) => setFirstInput(value)}
+        placeholder="Add Task"
       />
-      <button onClick={addTask}>Add Task</button>
-      
-      <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>
-            {task} <button onClick={() => removeTask(index)}>❌</button>
-          </li>
-        ))}
-      </ul>
+
+      <div className="Button">
+        <Button onClick={() => addTasks(firstInput)} />
+      </div>
+      <div className="Button-edit">
+      <Button onClick={() => editTasks(firstInput)} />
+      </div>
+
+      <div className="todo-item">
+        <Screen tasks={tasks} />
+      </div>
     </div>
   );
-};
+}
 
 export default App;
