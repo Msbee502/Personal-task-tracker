@@ -5,10 +5,11 @@ type InputProps = {
     className?: string;
 }
 
-const Input = ({value, onChange, placeholder}: InputProps) => {
+const Input = ({value, onChange, placeholder, className}: InputProps) => {
   return(
     <input value={value} onChange={(e) => onChange(e.target.value)}
-    placeholder={placeholder} />
+    placeholder={placeholder} 
+    className={`p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 ${className}`}/>
   );
 };
 

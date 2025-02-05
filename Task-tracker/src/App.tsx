@@ -32,32 +32,36 @@ function App() {
   };
 
   return (
-    <div className="ParentContainer app min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
-    <div className="" >
-      <h1 className="text-3xl font-bold mb-6 text-blue-600">My Tasks</h1>
+    <div className="app min-h-screen flex flex-col items-center justify-center p-6">
+    <div className=" " >
+      <h1 className="text-2xl font-bold text-red-400 my-5">My Tasks</h1>
 
       <Input
         value={firstInput} // Uses the Input component to accept user input.
         onChange={(value) => setFirstInput(value)} // Binds first input to input field and updates input
         placeholder="Add or Edit Task"
-        className="border-gray-200"
+        className="px-6 py-3 my-5" 
       />
 
-      <div className="Button flex space-x-4 mb-6">
+      <div className="">
         <Button 
           onClick={() => addTask(firstInput)} 
           label="Add Task"
-          
+          className="bg-red-500 my-4 text-white px-6 py-3 rounded-md hover:bg-red-600 transition duration-200"
+                   
         />
       </div>
 
       <div className="Button-Remove">
         <Button onClick={removeTask} label="Remove Last Task"
+        className="bg-red-500 my-4 text-white px-6 py-3 rounded-md hover:bg-red-600 transition duration-200"
          />
       </div>
 
       <div className="Button-Edit">
-        <Button onClick={editTask} label="Edit First Task" />
+        <Button onClick={editTask} label="Edit First Task"
+        className="bg-red-500 my-4 text-white px-6 py-3 rounded-md hover:bg-red-600 transition duration-200"
+         />
       </div>
 
       <div className="todo-item">
