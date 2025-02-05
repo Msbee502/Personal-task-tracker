@@ -1,13 +1,15 @@
 type ButtonProps = {
     onClick: () => void;
+    label: string;
   };
   
-  const Button = ({ onClick }: ButtonProps) => {
+  const Button = ({ onClick, label }: ButtonProps) => {
     return (
       <button className="button" onClick={onClick}>
-        Add Task
+        {label}
       </button>
     );
   };
   
   export default Button;
+  
